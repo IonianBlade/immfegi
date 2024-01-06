@@ -1,0 +1,44 @@
+﻿@using immfegi.ViewModels;
+@using immfegi.ViewModels.Account
+@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Авторизация";
+}
+
+
+
+<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                <div class="card-body p-5 text-center">
+                    <h3 class="mb-5">Войдите в свой аккаунт</h3>
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="col-md-12 alert alert-danger">
+                            <span><b>Извините.</b> - @TempData["Error"]</span>
+                        </div>
+                    }
+                    <form asp-action="Login">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group m-2">
+                            <label asp-for="EmailAddress" class="control-label"></label>
+                            <input asp-for="EmailAddress" class="form-control rounded-pill">
+                            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                        </div>
+                        <div class="form-group m-2">
+                            <label asp-for="Password" class="control-label"></label>
+                            <input asp-for="Password" class="form-control rounded-pill" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group m-2">
+                            <input class="btn btn-outline-success float right rounded-pill" type="submit" value="Войти" />
+							
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

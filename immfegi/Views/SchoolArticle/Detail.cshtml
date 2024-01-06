@@ -1,0 +1,164 @@
+﻿@using immfegi.Data
+@model immfegi.ViewModels.SchoolArticle.ChangeStatusSchoolArticleViewModel
+
+@{
+	ViewData["Title"] = "Изменить статус";
+}
+
+<div class="container py-5 h-100">
+	<div class="row d-flex justify-content-center align-items-center h-100">
+		<div class="col-12 col-md-8 ">
+			<div class="card shadow-2-strong" style="border-radius: 1rem;">
+				<div class="card-body p-5 text-center">
+					<h3 class="mb-5">Изменить статус</h3>
+					<form method="post" asp-action="Detail" enctype="multipart/form-data">
+						<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+						<input type="hidden" id="ApplicationUserId" name="ApplicationUserId" asp-for="ApplicationUserId" />
+						<input type="hidden" id="UploadDateTime" name="UploadDateTime" asp-for="UploadDateTime" />
+						<input type="hidden" id="ArticlePath" name="ArticlePath" asp-for="ArticlePath" />
+						<input type="hidden" id="Section" name="Section" asp-for="Section"/>
+						
+						<div class="form-group m-2">
+							<label asp-for="SchoolBoySurname" class="control-label"></label>
+							<input readonly asp-for="SchoolBoySurname" class="form-control rounded-pill" />
+							<span asp-validation-for="SchoolBoySurname" class="text-danger"></span>
+						</div>
+						<div class="form-group m-2">
+							<label asp-for="SchoolBoyName" class="control-label"></label>
+							<input readonly asp-for="SchoolBoyName" class="form-control rounded-pill" />
+							<span asp-validation-for="SchoolBoyName" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="SchoolBoyPatronymic" class="control-label"></label>
+							<input readonly asp-for="SchoolBoyPatronymic" class="form-control rounded-pill" />
+							<span asp-validation-for="SchoolBoyPatronymic" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="ArticleName" class="control-label"></label>
+							<input  readonly asp-for="ArticleName" class="form-control rounded-pill" />
+							<span asp-validation-for="ArticleName" class="text-danger"></span>
+						</div>
+						
+                        						
+						<div class="form-group m-2">
+							<label asp-for="ArticleActivities" class="control-label"></label>
+							<input readonly  asp-for="ArticleActivities" class="form-control rounded-pill" placeholder="Выберите секцию"></input>
+							<span asp-validation-for="ArticleActivities" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group">
+							<label asp-for="BirthDate">Дата рождения</label>
+							<input readonly type="date" asp-for="BirthDate" class="form-control" placeholder="Плановая дата">
+							<span asp-validation-for="BirthDate" class="text-danger"></span>
+							<span class="text-danger">@Html.ValidationMessageFor(model => model.BirthDate)</span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="SchoolBoyClass" class="control-label"></label>
+							<input readonly asp-for="SchoolBoyClass" class="form-control rounded-pill" />
+							<span asp-validation-for="SchoolBoyClass" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="FullEducationInstitutionName" class="control-label"></label>
+							<input readonly asp-for="FullEducationInstitutionName" class="form-control rounded-pill" />
+							<span asp-validation-for="FullEducationInstitutionName" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="AbbreviatedEducationInstitutionName" class="control-label"></label>
+							<input readonly asp-for="AbbreviatedEducationInstitutionName" class="form-control rounded-pill" />
+							<span asp-validation-for="AbbreviatedEducationInstitutionName" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="City" class="control-label"></label>
+							<input readonly asp-for="City" class="form-control rounded-pill" />
+							<span asp-validation-for="City" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="MunicipalDistrict" class="control-label"></label>
+							<input readonly asp-for="MunicipalDistrict" class="form-control rounded-pill" />
+							<span asp-validation-for="MunicipalDistrict" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="UrbanDistrict" class="control-label"></label>
+							<input readonly asp-for="UrbanDistrict" class="form-control rounded-pill" />
+							<span asp-validation-for="UrbanDistrict" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="SchoolBoyPhoneNumber" class="control-label"></label>
+							<input readonly asp-for="SchoolBoyPhoneNumber" class="form-control rounded-pill" />
+							<span asp-validation-for="SchoolBoyPhoneNumber" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="SchoolBoyEmail" class="control-label"></label>
+							<input readonly asp-for="SchoolBoyEmail" class="form-control rounded-pill" />
+							<span asp-validation-for="SchoolBoyEmail" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="ScientificDirectorSurname" class="control-label"></label>
+							<input readonly asp-for="ScientificDirectorSurname" class="form-control rounded-pill" />
+							<span asp-validation-for="ScientificDirectorSurname" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="ScientificDirectorName" class="control-label"></label>
+							<input readonly asp-for="ScientificDirectorName" class="form-control rounded-pill" />
+							<span asp-validation-for="ScientificDirectorName" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="ScientificDirectorPatronymic" class="control-label"></label>
+							<input readonly asp-for="ScientificDirectorPatronymic" class="form-control rounded-pill" />
+							<span asp-validation-for="ScientificDirectorPatronymic" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="ScientificDirectorTitle" class="control-label"></label>
+							<input readonly asp-for="ScientificDirectorTitle" class="form-control rounded-pill" />
+							<span asp-validation-for="ScientificDirectorTitle" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="ScientificDirectorPost" class="control-label"></label>
+							<input readonly asp-for="ScientificDirectorPost" class="form-control rounded-pill" />
+							<span asp-validation-for="ScientificDirectorPost" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="ScientificDirectorPhoneNumber" class="control-label"></label>
+							<input readonly asp-for="ScientificDirectorPhoneNumber" class="form-control rounded-pill" />
+							<span asp-validation-for="ScientificDirectorPhoneNumber" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="ScientificDirectorEmail" class="control-label"></label>
+							<input readonly asp-for="ScientificDirectorEmail" class="form-control rounded-pill" />
+							<span asp-validation-for="ScientificDirectorEmail" class="text-danger"></span>
+						</div>
+						
+						
+						<div class="form-group m-2">
+							<label asp-for="ArticleFormStatus" class="control-label"></label>
+							<select asp-items="@Html.GetEnumSelectList<ArticleFormStatus>()" asp-for="ArticleFormStatus" class="form-control rounded-pill">
+								
+							</select>
+							<span asp-validation-for="ArticleFormStatus" class="text-danger"></span>
+						</div>
+						<div class="form-group m-2">
+							<input class="btn btn-outline-success float-right rounded-pill" type="submit" value="Изменить статус" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

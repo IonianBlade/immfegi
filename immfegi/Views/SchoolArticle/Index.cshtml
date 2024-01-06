@@ -1,0 +1,77 @@
+﻿@using immfegi.Data
+@using immfegi.External
+@model List<SchoolArticleForm>
+
+
+<div class="m-2">
+    <div>
+        <h2>Статьи и заявки</h2>
+        <div class="d-flex flex-row">
+            <p class="p-2">Всего статей: @Model.Count</p>
+            <p class="p-2">Отклонено: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.Rejected)</p>
+            <p class="p-2">Завершено: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.Completed)</p>
+            <p class="p-2">В работе: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.InProgress)</p>
+            <p class="p-2">Не проверено: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.NotVerified)</p>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Название</th>
+            <th>Телефон</th>
+            <th>Почта</th>
+            <th>Секция</th>
+            <th>Дата</th>
+            <th>Статус</th>
+            <th>Статья</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        @{
+            var counter = 1;
+        }
+        @foreach (var article in Model)
+        {
+            <tr >
+                <td>@counter</td>
+                <td>@article.SchoolBoySurname</td>
+                <td>@article.SchoolBoyName</td>
+                <td>@article.SchoolBoyPatronymic</td>
+                <td>@article.ArticleName</td>
+                <td>@article.SchoolBoyPhoneNumber</td>
+                <td>@article.SchoolBoyEmail</td>
+                <td>@article.Section</td>
+                <td>@article.UploadDateTime</td>
+                @if (article.ArticleFormStatus == ArticleFormStatus.Completed)
+                {
+                    <td class="card-text text-success fw-bold">@article.ArticleFormStatus.GetDisplayName()</td>
+                }
+                @if (article.ArticleFormStatus == ArticleFormStatus.Rejected)
+                { 
+                    <td class="card-text text-danger fw-bold">@article.ArticleFormStatus.GetDisplayName()</td>
+                }
+                @if (article.ArticleFormStatus == ArticleFormStatus.InProgress)
+                {
+                    <td class="card-text text-primary fw-bold">@article.ArticleFormStatus.GetDisplayName()</td> 
+                }
+                @if (article.ArticleFormStatus == ArticleFormStatus.NotVerified)
+                { 
+                    <td class="card-text text-warning fw-bold">@article.ArticleFormStatus.GetDisplayName()</td>
+                }
+                <td>
+                    <a class="btn btn-primary" asp-controller="SchoolArticle"  asp-action="OpenArticle" asp-route-id="@article.Id" target="_blank">Скачать</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="SchoolArticle" asp-action="Detail" asp-route-id="@article.Id">Изменить статус</a>
+                </td>
+            </tr>
+            counter++;
+        }
+        </tbody>
+    </table>
+</div>
