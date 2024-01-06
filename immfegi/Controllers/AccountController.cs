@@ -45,7 +45,7 @@ public class AccountController : Controller
 				TempData["Error"] = "Неверные данные. Попробуйте еще раз";
 				return View(loginViewModel);
 			}
-			TempData["Error"] = "Неверные данные";
+			TempData["Error"] = "Неверные данные. Попробуйте еще раз";
 			return View(loginViewModel);
 		}
 
