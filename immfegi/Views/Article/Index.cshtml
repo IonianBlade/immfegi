@@ -14,7 +14,7 @@
             <p class="p-2">Не проверено: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.NotVerified)</p>
         </div>
     </div>
-    <table class="table">
+    <table class="table" id="myTable">
         <thead>
         <tr>
             <th>№</th>
@@ -75,3 +75,14 @@
         </tbody>
     </table>
 </div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                language: {
+                        url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/ru.json',
+                    },
+            });
+        });
+    </script>
+}

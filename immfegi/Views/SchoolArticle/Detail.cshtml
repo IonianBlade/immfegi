@@ -23,6 +23,7 @@
 							<input readonly asp-for="SchoolBoySurname" class="form-control rounded-pill" />
 							<span asp-validation-for="SchoolBoySurname" class="text-danger"></span>
 						</div>
+						
 						<div class="form-group m-2">
 							<label asp-for="SchoolBoyName" class="control-label"></label>
 							<input readonly asp-for="SchoolBoyName" class="form-control rounded-pill" />
@@ -41,7 +42,6 @@
 							<span asp-validation-for="ArticleName" class="text-danger"></span>
 						</div>
 						
-                        						
 						<div class="form-group m-2">
 							<label asp-for="ArticleActivities" class="control-label"></label>
 							<input readonly  asp-for="ArticleActivities" class="form-control rounded-pill" placeholder="Выберите секцию"></input>
@@ -145,7 +145,6 @@
 							<span asp-validation-for="ScientificDirectorEmail" class="text-danger"></span>
 						</div>
 						
-						
 						<div class="form-group m-2">
 							<label asp-for="ArticleFormStatus" class="control-label"></label>
 							<select asp-items="@Html.GetEnumSelectList<ArticleFormStatus>()" asp-for="ArticleFormStatus" class="form-control rounded-pill">
@@ -153,6 +152,7 @@
 							</select>
 							<span asp-validation-for="ArticleFormStatus" class="text-danger"></span>
 						</div>
+						
 						<div class="form-group m-2">
 							<input class="btn btn-outline-success float-right rounded-pill" type="submit" value="Изменить статус" />
 						</div>

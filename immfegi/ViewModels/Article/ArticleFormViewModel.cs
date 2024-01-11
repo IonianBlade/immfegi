@@ -6,15 +6,15 @@ namespace immfegi.ViewModels.Article;
 
 public class ArticleFormViewModel
 {
-    [DisplayName("Имя выступающего")]
-        [Required(ErrorMessage = "Введите имя выступающего")]
+        [DisplayName("Имя")]
+        [Required(ErrorMessage = "Введите имя")]
         public string SpeakerName { get; set; }
 
-        [DisplayName("Фамилия выступающего")]
-        [Required(ErrorMessage = "Введите фамилию выступающего")]
+        [DisplayName("Фамилия")]
+        [Required(ErrorMessage = "Введите фамилию")]
         public string SpeakerSurname { get; set; }
 
-        [DisplayName("Отчество выступающего")]
+        [DisplayName("Отчество")]
         public string? SpeakerPatronymic { get; set; }
         
         [DisplayName("Полное название образовательного учреждения")]
@@ -29,7 +29,7 @@ public class ArticleFormViewModel
         [Required(ErrorMessage = "Введите курс обучения")]
         public string Course { get; set; }
         
-        [DisplayName("Научное звание")]
+        [DisplayName("Научное звание, научная степень")]
         public string? ScientificTitle { get; set; }
         
         [DisplayName("Группа")]
@@ -43,26 +43,26 @@ public class ArticleFormViewModel
         [Required(ErrorMessage = "Введите название статьи на английском")]
         public string ArticleNameOnEnglish { get; set; }
         
-        [DisplayName("Предполагаемое участие")]
-        [Required(ErrorMessage = "Выберите форму участия")]
+        [DisplayName("Докладчик")]
+        [Required(ErrorMessage = "Выберите статус")]
         public IntendedParticipation IntendedParticipation { get; set; }
 
         [DisplayName("Секция")]
         [Required(ErrorMessage = "Выберите секцию")]
         public string Section { get; set; }
 
-        [DisplayName("Телефон выступающего")]
+        [DisplayName("Телефон")]
         [DataType(DataType.PhoneNumber)]
-        [Required(ErrorMessage = "Введите телефон выступающего")]
+        [Required(ErrorMessage = "Введите телефон")]
         public string SpeakerPhoneNumber { get; set; }
 
-        [DisplayName("Электронная почта выступающего")]
+        [DisplayName("Электронная почта")]
         [DataType(DataType.EmailAddress)]
-        [Required(ErrorMessage = "Введите адрес электронной почты выступающего")]
+        [Required(ErrorMessage = "Введите адрес электронной почты")]
         public string SpeakerEmail { get; set; }
         
-        [DisplayName("Статус выступающего")]
-        [Required(ErrorMessage = "Выберите статус выступающего")]
+        [DisplayName("Статус")]
+        [Required(ErrorMessage = "Выберите статус")]
         public SpeakerRole SpeakerRole { get; set; }
 
         [DisplayName("Имя научного руководителя")]

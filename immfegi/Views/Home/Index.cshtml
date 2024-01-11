@@ -1,14 +1,14 @@
 ﻿@{
     ViewData["Title"] = "Главная";
 }
-<div class="bg-image" style="background-repeat: no-repeat; background-size:cover; background-image: url(source/bg.jpg); height:1000px ">
+<div class="bg-image"  style="background-repeat: no-repeat; background-size:cover; background-image: url(source/bg.jpg); height:1000px ">
    
     <div style="padding-top:30px" class="text-center">
         <h6 class="fs-3 text-light p-1">Федеральное государственное бюджетное образовательное учреждение высшего образования</h6>
         <h6 class="fs-3 text-light p-1">«Российский государственный гидрометеорологический университет»</h6>
         <h6 class="fs-3 text-light p-1">Государственное бюджетное общеобразовательное учреждение лицей № 393 Кировского района Санкт-Петербурга</h6>
         <h1  class="display-4 text-light fw-bold">III МЕЖДУНАРОДНАЯ НАУЧНО-ПРАКТИЧЕСКАЯ КОНФЕРЕНЦИЯ «ИННОВАЦИОННЫЕ МЕТОДЫ МАТЕМАТИКИ И ФИЗИКИ В ЭКОЛОГИЧЕСКИХ И ГИДРОМЕТЕОРОЛОГИЧЕСКИХ ИССЛЕДОВАНИЯХ»</h1>
-        <h6 class="display-4 text-light p-5">5 апреля 2024 года, г. Санкт-Петербург</h6>
+        <h6 class="display-4 text-light p-3 fw-bold">5 апреля 2024 года, г. Санкт-Петербург</h6>
     </div>
 </div>
 
@@ -133,22 +133,46 @@
         </div>
     </div>
 </div>
-
-<div id="templateBlock" style="background:#d4effc">
-    <div class="container p-5">
-        <div class="text-center">
-            <h1 class="text-center display-4 fw-bold">Шаблон научной статьи</h1>
-            <h6 class="fs-5 m-5">Для участия в конференции, необходимо зарегистрироваться, заполнить форму и прикрепить статью с заявкой, оформленные по шаблону.</h6>
-            <a href="https://disk.yandex.ru/i/tLQuVgfvBTnFkA" target="_blank" class="fs-5 m-5">Статья оформленная по шаблону</a>
-        </div>
-    </div>
-</div>
 <div id="letterBlock" style="background:#d4effc">
     <div class="container p-5">
         <div class="text-center">
             <h1 class="text-center display-4 fw-bold">Информационное письмо</h1>
             <h6 class="fs-5 m-5">Для того чтобы ваше участие было максимально продуктивным, необходимо ознакомиться с информационным письмом. В нем содержится ключевая информация о мероприятии, его расписании, важных деталях и правилах участия.</h6>
             <a href="https://disk.yandex.ru/i/Fi9sNY0aEP_hPg" target="_blank" class="fs-5 m-5">Информационное письмо</a>
+        </div>
+    </div>
+</div>
+<div id="templateBlock">
+    <div class="container p-5">
+        <div class="text-center">
+            <h1 class="text-center display-4 fw-bold">Пример оформления научной статьи</h1>
+            <h6 class="fs-5 m-5">Для участия в конференции, необходимо зарегистрироваться, заполнить форму и прикрепить статью, оформленную по примеру.</h6>
+            <a href="https://disk.yandex.ru/i/tLQuVgfvBTnFkA" target="_blank" class="fs-5 m-5">Пример оформления статьи</a>
+        </div>
+    </div>
+</div>
+<div id="NirBlock" style="background:#d4effc">
+    <div class="container p-5">
+        <div class="text-center">
+            <h1 class="text-center display-4 fw-bold">Конкурс НИР</h1>
+            <h6 class="fs-5 m-5">Для участия в конкурсе научно-исследовательских работ необходимо зарегистрироваться на сайте, заполнить форму регистрации на конкурс НИР и прикрепить файл с текстом работы. В Приложениях 2 и 3 Информационного письма приведены требования к оформлению научно-исследовательской работы. Файл с текстом НИР необходимо назвать следующим образом - фамилия автора работы_НИР (например, Иванов_НИР). Более полная информация в 1-м информационном письме</h6>
+            <a href="https://disk.yandex.ru/i/Fi9sNY0aEP_hPg" target="_blank" class="fs-5 m-5">Информационное письмо</a>
+        </div>
+    </div>
+</div>
+<div id="CertsBlock">
+    <div class="container p-5">
+        <div class="text-center">
+            <h1 class="text-center display-4 fw-bold">Сертификаты за участие</h1>
+            <a href="https://disk.yandex.ru/d/QfcyxThY1qeeCw" target="_blank" class="fs-5 m-5">Сертификаты</a>
+        </div>
+    </div>
+</div>
+<div id="archiveBlock" style="background:#d4effc">
+    <div class="container p-5">
+        <div class="text-center">
+            <h1 class="text-center display-4 fw-bold">Архив</h1>
+            <a href="https://disk.yandex.ru/d/EeEAPEhUhT77vA" target="_blank" class="fs-5 m-5">Фотографии с конференций</a>
         </div>
     </div>
 </div>
@@ -167,16 +191,10 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Обработчик клика по элементам навигации
         document.querySelectorAll('#navigation a').forEach(function (anchor) {
             anchor.addEventListener('click', function (e) {
-                // Предотвращение стандартного поведения перехода по якорю
                 e.preventDefault();
-
-                // Получение идентификатора якоря из атрибута href
                 var targetId = this.getAttribute('href').substring(1);
-
-                // Плавная прокрутка к якорю
                 var targetElement = document.getElementById(targetId);
                 if (targetElement) {
                     var targetOffset = targetElement.offsetTop;
@@ -224,4 +242,18 @@
         document.getElementById('targetBlock').scrollIntoView({ behavior: 'smooth' });
     });
 </script>
-
+<script>
+    document.getElementById('scrollNirButton').addEventListener('click', function () {
+        document.getElementById('NirBlock').scrollIntoView({ behavior: 'smooth' });
+    });
+</script>
+<script>
+    document.getElementById('scrollCertsButton').addEventListener('click', function () {
+        document.getElementById('CertsBlock').scrollIntoView({ behavior: 'smooth' });
+    });
+</script>
+<script>
+    document.getElementById('scrollArchiveButton').addEventListener('click', function () {
+        document.getElementById('archiveBlock').scrollIntoView({ behavior: 'smooth' });
+    });
+</script>

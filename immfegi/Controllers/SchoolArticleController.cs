@@ -66,6 +66,7 @@ public class SchoolArticleController : Controller
     }
 
     [HttpPost]
+    [Authorize(Roles = ApplicationUserRoles.Administrator)]
     public IActionResult Detail(int id, ChangeStatusSchoolArticleViewModel changeStatusSchoolArticleViewModel)
     {
         if (!ModelState.IsValid)
@@ -129,6 +130,7 @@ public class SchoolArticleController : Controller
     }
 
     [HttpPost]
+    [Authorize(Roles = ApplicationUserRoles.Student)]
     public IActionResult Upload(SchoolArticleFormViewModel schoolArticleFormViewModel)
     {
         if (ModelState.IsValid)
@@ -172,7 +174,7 @@ public class SchoolArticleController : Controller
         }
         return View(schoolArticleFormViewModel);
     }
-
+    [Authorize(Roles = ApplicationUserRoles.Administrator)]
     public IActionResult OpenArticle(int id)
     {
         var article = _schoolArticleRepository.GetById(id);
@@ -187,7 +189,7 @@ public class SchoolArticleController : Controller
         return File(filePath, "application/msword", Path.GetFileNameWithoutExtension(filePath));
     }
 
-
+    [Authorize(Roles = ApplicationUserRoles.Administrator)]
     private string SaveFile(IFormFile file, string section, string surname, string name, string? patronymic)
     {
 

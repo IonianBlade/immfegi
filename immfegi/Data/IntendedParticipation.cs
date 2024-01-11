@@ -4,9 +4,13 @@ namespace immfegi.Data;
 
 public enum IntendedParticipation
 {
+    
     [Display(Name = "Очное")]
     InPerson,
     
     [Display(Name = "Дистанционное")]
-    Remote
+    Remote,
+    
+    [Display(Name= "Нет")]
+    No
 }

@@ -67,6 +67,7 @@ public class ArticleController : Controller
         }
 
         [HttpPost]
+        [Authorize(Roles = ApplicationUserRoles.Administrator)]
         public IActionResult Detail(int id, ChangeStatusArticleViewModel changeStatusArticleViewModel)
         {
             if (!ModelState.IsValid)
@@ -110,6 +111,7 @@ public class ArticleController : Controller
             }
             return View(changeStatusArticleViewModel);
         }
+        [Authorize(Roles = ApplicationUserRoles.Administrator)]
         public IActionResult OpenArticle(int id)
         {
             var article = _articleRepository.GetById(id);
@@ -144,6 +146,7 @@ public class ArticleController : Controller
         }
 
         [HttpPost]
+        [Authorize(Roles = ApplicationUserRoles.Student)]
         public IActionResult Upload(ArticleFormViewModel articleFormViewModel)
         {
             if (ModelState.IsValid)
@@ -188,7 +191,7 @@ public class ArticleController : Controller
             }
             return View(articleFormViewModel);
         }
-
+        [Authorize(Roles = ApplicationUserRoles.Administrator)]
         private string SaveFile(IFormFile file, string section, string surname, string name, string? patronymic)
         {
 

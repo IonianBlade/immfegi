@@ -72,7 +72,7 @@ public class SchoolArticleFormViewModel
     public string ScientificDirectorName { get; set; }
     
     [DisplayName("Отчество научного руководителя")]
-    public string ScientificDirectorPatronymic { get; set; }
+    public string? ScientificDirectorPatronymic { get; set; }
     
     [DisplayName("Звание научного руководителя")]
     [Required(ErrorMessage = "Введите звание научного руководителя")]

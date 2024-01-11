@@ -22,7 +22,7 @@ public class SchoolArticleForm
     public string SchoolBoyEmail { get; set; }
     public string ScientificDirectorSurname { get; set; }
     public string ScientificDirectorName { get; set; }
-    public string ScientificDirectorPatronymic { get; set; }
+    public string? ScientificDirectorPatronymic { get; set; }
     public string ScientificDirectorTitle { get; set; }
     public string ScientificDirectorPost{ get; set; }
     public string? ScientificDirectorPhoneNumber { get; set; }
