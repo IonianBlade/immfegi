@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using immfegi.Data;
@@ -12,10 +11,9 @@ using immfegi.Data;
 namespace immfegi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240111164356_FixMigrations")]
-    partial class FixMigrations
+    partial class DataContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -92,15 +90,15 @@ namespace immfegi.Migrations
                         {
                             Id = "02174cf0–9412–4cfe-afbf-59f706d72cf6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "09c55d0d-4ab3-4143-b819-19f92236c92f",
+                            ConcurrencyStamp = "531d0a42-d6df-4269-b7b3-d313e7e4477a",
                             Email = "zirinazirina2015@yandex.ru",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ZIRINAZIRINA2015@YANDEX.RU",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEElEwMIZjmsNAB6bgjLyeVCXROURO9TDB6B+f2tyYL4sYyeyiAC1hBfUByFZTrCAVQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKRpYwiFxSWZ2zI06C6g8q91yA2UB/bOqSM+ZavaJaBbcG48j0AVK2ZUpdTp7FaV3A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "234afc3d-27e1-4bac-83d6-567c7679691a",
+                            SecurityStamp = "436911f1-fb1f-4ec4-8e00-f2033b4c73d9",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -108,15 +106,15 @@ namespace immfegi.Migrations
                         {
                             Id = "02174cf0–9412–4cfe-afbf-59f706d72cf2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3298e89c-2e9d-4755-b77f-5e2ad1065f37",
+                            ConcurrencyStamp = "578e71a9-7773-4b3d-b5fa-57f6c7b320e2",
                             Email = "inspector@test.ru",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "INSPECTOR@TEST.RU",
                             NormalizedUserName = "INSPECTOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGObgREFyyPlJU4zO8n4wyWLLmuTnsIrGYjfDGkHZUQ5NAfjpSlGnCiHKYh5CwXV6w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPHJFVSx9knaSqjWWKoWrjYCJVbg+ch2bQv/ffJhI6O9XbuqUrdCBrBQ7+1uWsAqcw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e3dbbc6d-0cea-4ee9-9f26-1a70fe6fd23c",
+                            SecurityStamp = "babf6ffa-85aa-4406-96ac-c81d862f0f8f",
                             TwoFactorEnabled = false,
                             UserName = "inspektor"
                         });
