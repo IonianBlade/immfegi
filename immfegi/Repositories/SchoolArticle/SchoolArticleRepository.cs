@@ -24,6 +24,15 @@ public class SchoolArticleRepository : ISchoolArticleRepository
         return  _context.SchoolArticleForms.ToList();
     }
 
+    public void DeleteArticle(int id)
+    {
+            var article = _context.SchoolArticleForms.FirstOrDefault(i => i.Id == id);
+            if (article == null) 
+                return;
+            _context.SchoolArticleForms.Remove(article);
+            _context.SaveChanges();
+    }
+
     public SchoolArticleForm GetById(int id)
     {
         return _context.SchoolArticleForms.FirstOrDefault(i => i.Id == id);

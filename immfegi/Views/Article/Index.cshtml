@@ -4,17 +4,22 @@
 
 
 <div class="m-2">
-    <div>
+    <div class="m-2">
         <h2>Статьи и заявки</h2>
         <div class="d-flex flex-row">
-            <p class="p-2">Всего статей: @Model.Count</p>
-            <p class="p-2">Отклонено: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.Rejected)</p>
-            <p class="p-2">Завершено: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.Completed)</p>
-            <p class="p-2">В работе: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.InProgress)</p>
-            <p class="p-2">Не проверено: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.NotVerified)</p>
+            <p class="p-2 fw-bold">Всего статей: @Model.Count</p>
+            <p class="p-2 fw-bold">Отклонено: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.Rejected)</p>
+            <p class="p-2 fw-bold">Завершено: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.Completed)</p>
+            <p class="p-2 fw-bold">На проверке: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.UnderReview)</p>
+            <p class="p-2 fw-bold">Отправлено модераторам: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.SentToModerators)</p>
+            <p class="p-2 fw-bold">На антиплагиате: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.AntiPlagiarism)</p>
+            <p class="p-2 fw-bold">Не проверено: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.NotVerified)</p>
+        </div>
+        <div>
+            <a class="btn btn-primary" asp-controller="Export" asp-action="ExportArticleToExcel">Экспорт в Excel</a>
         </div>
     </div>
-    <table class="table" id="myTable">
+    <table class="m-2 table" id="myTable">
         <thead>
         <tr>
             <th>№</th>
@@ -29,6 +34,8 @@
             <th>Статус</th>
             <th>Статья</th>
             <th>Действия</th>
+            <th>Детали</th>
+            <th>Заявка</th>
         </tr>
         </thead>
         <tbody>
@@ -55,7 +62,15 @@
                 { 
                     <td class="card-text text-danger fw-bold">@article.ArticleFormStatus.GetDisplayName()</td>
                 }
-                @if (article.ArticleFormStatus == ArticleFormStatus.InProgress)
+                @if (article.ArticleFormStatus == ArticleFormStatus.UnderReview)
+                {
+                    <td class="card-text text-primary fw-bold">@article.ArticleFormStatus.GetDisplayName()</td> 
+                }
+                @if (article.ArticleFormStatus == ArticleFormStatus.SentToModerators)
+                {
+                    <td class="card-text text-primary fw-bold">@article.ArticleFormStatus.GetDisplayName()</td> 
+                }
+                @if (article.ArticleFormStatus == ArticleFormStatus.AntiPlagiarism)
                 {
                     <td class="card-text text-primary fw-bold">@article.ArticleFormStatus.GetDisplayName()</td> 
                 }
@@ -64,10 +79,16 @@
                     <td class="card-text text-warning fw-bold">@article.ArticleFormStatus.GetDisplayName()</td>
                 }
                 <td>
-                    <a class="btn btn-primary" asp-controller="Article"  asp-action="OpenArticle" asp-route-id="@article.Id" target="_blank">Скачать</a>
+                    <a class="btn btn-primary" asp-controller="Download"  asp-action="DownloadArticle" asp-route-id="@article.Id" target="_blank">Скачать</a>
                 </td>
                 <td>
-                    <a class="btn btn-primary" asp-controller="Article" asp-action="Detail" asp-route-id="@article.Id">Изменить статус</a>
+                    <a class="btn btn-primary" asp-controller="Article" asp-action="Edit" asp-route-id="@article.Id">Редактировать</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="Article" asp-action="Detail" asp-route-id="@article.Id">Детали</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="Export" asp-action="ExportArticleToWord" asp-route-id="@article.Id">Скачать</a>
                 </td>
             </tr>
             counter++;

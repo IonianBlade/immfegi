@@ -3,9 +3,9 @@ using immfegi.Data;
 
 namespace immfegi.ViewModels.Article;
 
-public class ChangeStatusArticleViewModel
+public class EditArticleViewModel
 {
-     [DisplayName("Имя выступающего")]
+    [DisplayName("Имя выступающего")]
     public string SpeakerName { get; set; }
     
     [DisplayName("Фамилия выступающего")]

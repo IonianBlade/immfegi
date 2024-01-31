@@ -3,8 +3,10 @@ using immfegi.Data;
 
 namespace immfegi.ViewModels.SchoolArticle;
 
-public class ChangeStatusSchoolArticleViewModel
+public class DetailsSchoolArticleViewModel
 {
+    public int Id { get; set; }
+    
     [DisplayName("Фамилия участника")]
     public string SchoolBoySurname { get; set; }
     
@@ -76,7 +78,4 @@ public class ChangeStatusSchoolArticleViewModel
     
     [DisplayName("Секция")]
     public string Section { get; set; }
-    
-    public string ApplicationUserId { get; set; }
-    public string ArticlePath { get; set; }
 }

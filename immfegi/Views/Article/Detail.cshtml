@@ -1,156 +1,97 @@
-﻿@using immfegi.Data
-@model immfegi.ViewModels.Article.ChangeStatusArticleViewModel
+﻿@using immfegi.External
+@model immfegi.ViewModels.Article.DetailsArticleViewModel
 
 @{
-	ViewData["Title"] = "Изменить статус";
+    ViewData["Title"] = "Детали заявки";
 }
 
-<div class="container py-5 h-100">
-	<div class="row d-flex justify-content-center align-items-center h-100">
-		<div class="col-12 col-md-8 ">
-			<div class="card shadow-2-strong" style="border-radius: 1rem;">
-				<div class="card-body p-5 text-center">
-					<h3 class="mb-5">Изменить статус</h3>
-					<form method="post" asp-action="Detail" enctype="multipart/form-data">
-						<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-						<input type="hidden" id="ApplicationUserId" name="ApplicationUserId" asp-for="ApplicationUserId" />
-						<input type="hidden" id="UploadDateTime" name="UploadDateTime" asp-for="UploadDateTime" />
-						<input type="hidden" id="ArticlePath" name="ArticlePath" asp-for="ArticlePath" />
-						
-						<div class="form-group m-2">
-							<label asp-for="SpeakerSurname" class="control-label"></label>
-							<input readonly  asp-for="SpeakerSurname" class="form-control rounded-pill" />
-							<span asp-validation-for="SpeakerSurname" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="SpeakerName" class="control-label"></label>
-							<input readonly asp-for="SpeakerName" class="form-control rounded-pill" />
-							<span asp-validation-for="SpeakerName" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="SpeakerPatronymic" class="control-label"></label>
-							<input readonly  asp-for="SpeakerPatronymic" class="form-control rounded-pill" />
-							<span asp-validation-for="SpeakerPatronymic" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="FullEducationInstitutionName" class="control-label"></label>
-							<input readonly  asp-for="FullEducationInstitutionName" class="form-control rounded-pill" />
-							<span asp-validation-for="FullEducationInstitutionName" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="SpeakerPost" class="control-label"></label>
-							<input readonly  asp-for="SpeakerPost" class="form-control rounded-pill" />
-							<span asp-validation-for="SpeakerPost" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="Course" class="control-label"></label>
-							<input readonly  asp-for="Course" class="form-control rounded-pill" />
-							<span asp-validation-for="Course" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="ScientificTitle" class="control-label"></label>
-							<input readonly  asp-for="ScientificTitle" class="form-control rounded-pill" />
-							<span asp-validation-for="ScientificTitle" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="Group" class="control-label"></label>
-							<input readonly  asp-for="Group" class="form-control rounded-pill" />
-							<span asp-validation-for="Group" class="text-danger"></span>
-						</div>
-						
-						<div class="form-group m-2">
-							<label asp-for="ArticleNameOnRussian" class="control-label"></label>
-							<input readonly  asp-for="ArticleNameOnRussian" class="form-control rounded-pill" />
-							<span asp-validation-for="ArticleNameOnRussian" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="ArticleNameOnEnglish" class="control-label"></label>
-							<input readonly  asp-for="ArticleNameOnEnglish" class="form-control rounded-pill" />
-							<span asp-validation-for="ArticleNameOnEnglish" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="IntendedParticipation" class="control-label"></label>
-							<select readonly asp-items="@Html.GetEnumSelectList<IntendedParticipation>()" asp-for="IntendedParticipation" class="form-control rounded-pill">
-                        								
-							</select>
-							<span asp-validation-for="IntendedParticipation" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="Section" class="control-label"></label>
-							<input readonly asp-for="Section"  class="form-control rounded-pill"/>
-							<span asp-validation-for="Section" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="SpeakerPhoneNumber" class="control-label"></label>
-							<input readonly asp-for="SpeakerPhoneNumber" class="form-control rounded-pill" />
-							<span asp-validation-for="SpeakerPhoneNumber" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="SpeakerEmail" class="control-label"></label>
-							<input readonly asp-for="SpeakerEmail" class="form-control rounded-pill" />
-							<span asp-validation-for="SpeakerEmail" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="SpeakerRole" class="control-label"></label>
-							<select readonly asp-items="@Html.GetEnumSelectList<SpeakerRole>()" asp-for="SpeakerRole" class="form-control rounded-pill">
-                                                								
-							</select>
-							<span asp-validation-for="SpeakerRole" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="ScientificDirectorName" class="control-label"></label>
-							<input readonly asp-for="ScientificDirectorName" class="form-control rounded-pill" />
-							<span asp-validation-for="ScientificDirectorName" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="ScientificDirectorSurname" class="control-label"></label>
-							<input readonly asp-for="ScientificDirectorSurname" class="form-control rounded-pill" />
-							<span asp-validation-for="ScientificDirectorSurname" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="ScientificDirectorPatronymic" class="control-label"></label>
-							<input readonly asp-for="ScientificDirectorPatronymic" class="form-control rounded-pill" />
-							<span asp-validation-for="ScientificDirectorPatronymic" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="ScientificDirectorFullEducationInstitutionName" class="control-label"></label>
-							<input readonly asp-for="ScientificDirectorFullEducationInstitutionName" class="form-control rounded-pill" />
-							<span asp-validation-for="ScientificDirectorFullEducationInstitutionName" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="ScientificDirectorPost" class="control-label"></label>
-							<input readonly asp-for="ScientificDirectorPost" class="form-control rounded-pill" />
-							<span asp-validation-for="ScientificDirectorPost" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="ScientificDirectorTitle" class="control-label"></label>
-							<input readonly asp-for="ScientificDirectorTitle" class="form-control rounded-pill" />
-							<span asp-validation-for="ScientificDirectorTitle" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="ScientificDirectorPhoneNumber" class="control-label"></label>
-							<input readonly asp-for="ScientificDirectorPhoneNumber" class="form-control rounded-pill" />
-							<span asp-validation-for="ScientificDirectorPhoneNumber" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<label asp-for="ScientificDirectorEmail" class="control-label"></label>
-							<input readonly asp-for="ScientificDirectorEmail" class="form-control rounded-pill" />
-							<span asp-validation-for="ScientificDirectorEmail" class="text-danger"></span>
-						</div>
-						
-						<div class="form-group m-2">
-							<label asp-for="ArticleFormStatus" class="control-label"></label>
-							<select  asp-items="@Html.GetEnumSelectList<ArticleFormStatus>()" asp-for="ArticleFormStatus" class="form-control rounded-pill">
-								
-							</select>
-							<span asp-validation-for="ArticleFormStatus" class="text-danger"></span>
-						</div>
-						<div class="form-group m-2">
-							<input class="btn btn-outline-success float-right rounded-pill" type="submit" value="Изменить статус" />
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Детали заявки</h3>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">Дата и время загрузки статьи:</dt>
+                        <dd class="col-sm-8">@Model.UploadDateTime</dd>
+                        
+                        <dt class="col-sm-4">Статус заявки:</dt>
+                        <dd class="col-sm-8">@Model.ArticleFormStatus.GetDisplayName()</dd>
+                        
+                        <div class="m-3">
+                            <h3 class="text-center fw-bold">Докладчик</h3>
+                        </div>
+                        
+                        <dt class="col-sm-4">ФИО:</dt>
+                        <dd class="col-sm-8">@Model.SpeakerSurname @Model.SpeakerName @Model.SpeakerPatronymic</dd>
+
+                        <dt class="col-sm-4">Полное название образовательного учреждения:</dt>
+                        <dd class="col-sm-8">@Model.FullEducationInstitutionName</dd>
+
+                        <dt class="col-sm-4">Занимаемая должность:</dt>
+                        <dd class="col-sm-8">@Model.SpeakerPost</dd>
+
+                        <dt class="col-sm-4">Курс обучения:</dt>
+                        <dd class="col-sm-8">@Model.Course</dd>
+
+                        <dt class="col-sm-4">Научное звание:</dt>
+                        <dd class="col-sm-8">@Model.ScientificTitle</dd>
+
+                        <dt class="col-sm-4">Группа:</dt>
+                        <dd class="col-sm-8">@Model.Group</dd>
+
+
+                        <dt class="col-sm-4">Название статьи на русском:</dt>
+                        <dd class="col-sm-8">@Model.ArticleNameOnRussian</dd>
+
+                        <dt class="col-sm-4">Название статьи на английском:</dt>
+                        <dd class="col-sm-8">@Model.ArticleNameOnEnglish</dd>
+
+                        <dt class="col-sm-4">Предполагаемое участие:</dt>
+                        <dd class="col-sm-8">@Model.IntendedParticipation.GetDisplayName()</dd>
+
+                        <dt class="col-sm-4">Секция:</dt>
+                        <dd class="col-sm-8">@Model.Section</dd>
+
+                        <dt class="col-sm-4">Электронная почта:</dt>
+                        <dd class="col-sm-8">@Model.SpeakerEmail</dd>
+
+                        <dt class="col-sm-4">Статус:</dt>
+                        <dd class="col-sm-8">@Model.SpeakerRole.GetDisplayName()</dd>
+
+                        <div class="m-3">
+                            <h3 class="text-center fw-bold">Научный руководитель</h3>
+                        </div>
+
+                        <dt class="col-sm-4">ФИО:</dt>
+                        <dd class="col-sm-8">@Model.ScientificDirectorSurname @Model.ScientificDirectorName @Model.ScientificDirectorPatronymic</dd>
+
+                        <dt class="col-sm-4">Полное название образовательного учреждения:</dt>
+                        <dd class="col-sm-8">@Model.ScientificDirectorFullEducationInstitutionName</dd>
+
+                        <dt class="col-sm-4">Занимаемая дожность:</dt>
+                        <dd class="col-sm-8">@Model.ScientificDirectorPost</dd>
+
+                        <dt class="col-sm-4">Ученое звание:</dt>
+                        <dd class="col-sm-8">@Model.ScientificDirectorTitle</dd>
+                        
+                        <dt class="col-sm-4">Телефон:</dt>
+                        <dd class="col-sm-8">@Model.ScientificDirectorPhoneNumber</dd>
+
+                        <dt class="col-sm-4">Электронная почта:</dt>
+                        <dd class="col-sm-8">@Model.ScientificDirectorEmail</dd>
+                    </dl>
+                    <form method="post" action="@Url.Action("Delete", "Article")">
+                        @Html.AntiForgeryToken()
+                        <input readonly type="hidden" id="Id" name="Id" asp-for="Id" />
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-danger">Удалить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

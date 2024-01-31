@@ -1,11 +1,11 @@
 ﻿namespace immfegi.External;
 
-public class UniqueFileName
+public static class UniqueFileName
 {
-    public string GetUniqueFileName(string fileName, string extension, string folderPath)
+    public static string GetUniqueFileName(string fileName, string extension, string folderPath)
     {
-        string newFileName = fileName;
-        int count = 1;
+        var newFileName = fileName;
+        var count = 1;
 
 
         while (File.Exists(Path.Combine(folderPath, newFileName + extension)))

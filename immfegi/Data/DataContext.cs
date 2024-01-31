@@ -23,6 +23,19 @@ public class DataContext : IdentityDbContext<ApplicationUser>
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            
+            builder.Entity<ArticleForm>()
+                        .HasMany(a => a.UserArticles)
+                        .WithOne(ua => ua.ArticleForm)
+                        .HasForeignKey(ua => ua.ArticleFormId)
+                        .OnDelete(DeleteBehavior.Cascade);
+            
+            builder.Entity<SchoolArticleForm>()
+                .HasMany(a => a.UserSchoolArticles)
+                .WithOne(ua => ua.SchoolArticleForm)
+                .HasForeignKey(ua => ua.SchoolArticleFormId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
             const string adminId = "02174cf0–9412–4cfe-afbf-59f706d72cf6";
             const string inspectorId = "02174cf0–9412–4cfe-afbf-59f706d72cf2";
             const string adminRoleId = "341743f0-asd2–42de-afbf-59kmkkmk72cf6";

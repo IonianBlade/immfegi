@@ -9,9 +9,16 @@
     <ItemGroup>
       <_ContentIncludedByDefault Remove="Views\Account\Login.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Account\Register.cshtml" />
+      <_ContentIncludedByDefault Remove="wwwroot\files\ИММФЭГИ\Секция 1. Фундаментальные и прикладные аспекты высшей математики в современных исследованиях\1 1 1\Шаблон.docx" />
+      <_ContentIncludedByDefault Remove="wwwroot\files\ИММФЭГИ\Секция 1. Фундаментальные и прикладные аспекты высшей математики в современных исследованиях\1` 1 1\Подать статью на конференцию.docx" />
+      <_ContentIncludedByDefault Remove="wwwroot\files\ИММФЭГИ\Секция 1. Фундаментальные и прикладные аспекты высшей математики в современных исследованиях\2 2 2\География Предметный тур_8_12.docx" />
+      <_ContentIncludedByDefault Remove="wwwroot\files\ИММФЭГИ\Секция 2. Физические исследования природных процессов\Ятченко Андрей Сергеевич\Подать статью на конференцию.docx" />
+      <_ContentIncludedByDefault Remove="wwwroot\files\ИММФЭГИ\Секция 5. (для школьников). Конкурс научно-исследовательских работ «МИФы в Природе (математика, информатика, физика в природе)»\1 1 1\Шаблон.docx" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="DocX" Version="3.0.0" />
+      <PackageReference Include="EPPlus" Version="7.0.8" />
       <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.25" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.25" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.25">
@@ -19,6 +26,11 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.22" />
+      <PackageReference Include="NPOI" Version="2.6.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\files\ИММФЭГИ\" />
     </ItemGroup>
 
 </Project>

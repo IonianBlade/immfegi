@@ -19,6 +19,15 @@ public class ArticleRepository : IArticleRepository
         return Save();
     }
 
+    public void DeleteArticle(int id)
+    {
+        var article = _context.ArticleForms.FirstOrDefault(i => i.Id == id);
+        if (article == null) 
+            return;
+        _context.ArticleForms.Remove(article);
+        _context.SaveChanges();
+    }
+
     public List<ArticleForm?> GetAll()
     {
         return  _context.ArticleForms.ToList();

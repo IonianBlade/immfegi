@@ -32,9 +32,45 @@ public class SchoolArticleController : Controller
     [Authorize(Roles = ApplicationUserRoles.Administrator)]
     public IActionResult Detail(int id)
     {
+        var schoolArticle = _schoolArticleRepository.GetById(id);
+
+        var detailsArticleViewModel = new DetailsSchoolArticleViewModel()
+        {
+            Id = schoolArticle.Id,
+            SchoolBoySurname = schoolArticle.SchoolBoySurname,
+            SchoolBoyName = schoolArticle.SchoolBoyName,
+            SchoolBoyPatronymic = schoolArticle.SchoolBoyPatronymic,
+            ArticleName = schoolArticle.ArticleName,
+            ArticleActivities = schoolArticle.ArticleActivities,
+            BirthDate = schoolArticle.BirthDate,
+            SchoolBoyClass = schoolArticle.SchoolBoyClass,
+            FullEducationInstitutionName = schoolArticle.FullEducationInstitutionName,
+            AbbreviatedEducationInstitutionName = schoolArticle.AbbreviatedEducationInstitutionName,
+            City = schoolArticle.City,
+            MunicipalDistrict = schoolArticle.MunicipalDistrict,
+            UrbanDistrict = schoolArticle.UrbanDistrict,
+            SchoolBoyPhoneNumber = schoolArticle.SchoolBoyPhoneNumber,
+            SchoolBoyEmail = schoolArticle.SchoolBoyEmail,
+            ScientificDirectorName = schoolArticle.ScientificDirectorName,
+            ScientificDirectorSurname = schoolArticle.ScientificDirectorSurname,
+            ScientificDirectorPatronymic = schoolArticle.ScientificDirectorPatronymic,
+            ScientificDirectorTitle = schoolArticle.ScientificDirectorTitle,
+            ScientificDirectorPost = schoolArticle.ScientificDirectorPost,
+            ScientificDirectorPhoneNumber = schoolArticle.ScientificDirectorPhoneNumber,
+            ScientificDirectorEmail = schoolArticle.ScientificDirectorEmail,
+            UploadDateTime = schoolArticle.UploadDateTime,
+            Section = schoolArticle.Section,
+            ArticleFormStatus = schoolArticle.ArticleFormStatus,
+        };
+        return View(detailsArticleViewModel);
+    }
+    
+    [Authorize(Roles = ApplicationUserRoles.Administrator)]
+    public IActionResult Edit(int id)
+    {
         var article = _schoolArticleRepository.GetById(id);
 
-        var changeStatusArticleViewModel = new ChangeStatusSchoolArticleViewModel()
+        var changeStatusArticleViewModel = new EditSchoolArticleViewModel()
         {
                 ArticlePath = article.ArticlePath,
                 SchoolBoySurname = article.SchoolBoySurname,
@@ -67,7 +103,7 @@ public class SchoolArticleController : Controller
 
     [HttpPost]
     [Authorize(Roles = ApplicationUserRoles.Administrator)]
-    public IActionResult Detail(int id, ChangeStatusSchoolArticleViewModel changeStatusSchoolArticleViewModel)
+    public IActionResult Edit(int id, EditSchoolArticleViewModel editSchoolArticleViewModel)
     {
         if (!ModelState.IsValid)
         {
@@ -77,37 +113,37 @@ public class SchoolArticleController : Controller
                 var articleForm = new SchoolArticleForm()
                 {
                     Id = id,
-                    SchoolBoySurname = changeStatusSchoolArticleViewModel.SchoolBoySurname,
-                    SchoolBoyName = changeStatusSchoolArticleViewModel.SchoolBoyName,
-                    SchoolBoyPatronymic = changeStatusSchoolArticleViewModel.SchoolBoyPatronymic,
-                    ArticleName = changeStatusSchoolArticleViewModel.ArticleName,
-                    ArticleActivities = changeStatusSchoolArticleViewModel.ArticleActivities,
-                    BirthDate = changeStatusSchoolArticleViewModel.BirthDate,
-                    SchoolBoyClass = changeStatusSchoolArticleViewModel.SchoolBoyClass,
-                    FullEducationInstitutionName = changeStatusSchoolArticleViewModel.FullEducationInstitutionName,
-                    AbbreviatedEducationInstitutionName = changeStatusSchoolArticleViewModel.AbbreviatedEducationInstitutionName,
-                    City = changeStatusSchoolArticleViewModel.City,
-                    MunicipalDistrict = changeStatusSchoolArticleViewModel.MunicipalDistrict,
-                    UrbanDistrict = changeStatusSchoolArticleViewModel.UrbanDistrict,
-                    SchoolBoyPhoneNumber = changeStatusSchoolArticleViewModel.SchoolBoyPhoneNumber,
-                    SchoolBoyEmail = changeStatusSchoolArticleViewModel.SchoolBoyEmail,
-                    ScientificDirectorName = changeStatusSchoolArticleViewModel.ScientificDirectorName,
-                    ScientificDirectorSurname = changeStatusSchoolArticleViewModel.ScientificDirectorSurname,
-                    ScientificDirectorPatronymic = changeStatusSchoolArticleViewModel.ScientificDirectorPatronymic,
-                    ScientificDirectorTitle = changeStatusSchoolArticleViewModel.ScientificDirectorTitle,
-                    ScientificDirectorPost = changeStatusSchoolArticleViewModel.ScientificDirectorPost,
-                    ScientificDirectorPhoneNumber = changeStatusSchoolArticleViewModel.ScientificDirectorPhoneNumber,
-                    ScientificDirectorEmail = changeStatusSchoolArticleViewModel.ScientificDirectorEmail,
-                    UploadDateTime = changeStatusSchoolArticleViewModel.UploadDateTime,
-                    Section = changeStatusSchoolArticleViewModel.Section,
-                    ArticleFormStatus = changeStatusSchoolArticleViewModel.ArticleFormStatus,
-                    ArticlePath = changeStatusSchoolArticleViewModel.ArticlePath,
+                    SchoolBoySurname = editSchoolArticleViewModel.SchoolBoySurname,
+                    SchoolBoyName = editSchoolArticleViewModel.SchoolBoyName,
+                    SchoolBoyPatronymic = editSchoolArticleViewModel.SchoolBoyPatronymic,
+                    ArticleName = editSchoolArticleViewModel.ArticleName,
+                    ArticleActivities = editSchoolArticleViewModel.ArticleActivities,
+                    BirthDate = editSchoolArticleViewModel.BirthDate,
+                    SchoolBoyClass = editSchoolArticleViewModel.SchoolBoyClass,
+                    FullEducationInstitutionName = editSchoolArticleViewModel.FullEducationInstitutionName,
+                    AbbreviatedEducationInstitutionName = editSchoolArticleViewModel.AbbreviatedEducationInstitutionName,
+                    City = editSchoolArticleViewModel.City,
+                    MunicipalDistrict = editSchoolArticleViewModel.MunicipalDistrict,
+                    UrbanDistrict = editSchoolArticleViewModel.UrbanDistrict,
+                    SchoolBoyPhoneNumber = editSchoolArticleViewModel.SchoolBoyPhoneNumber,
+                    SchoolBoyEmail = editSchoolArticleViewModel.SchoolBoyEmail,
+                    ScientificDirectorName = editSchoolArticleViewModel.ScientificDirectorName,
+                    ScientificDirectorSurname = editSchoolArticleViewModel.ScientificDirectorSurname,
+                    ScientificDirectorPatronymic = editSchoolArticleViewModel.ScientificDirectorPatronymic,
+                    ScientificDirectorTitle = editSchoolArticleViewModel.ScientificDirectorTitle,
+                    ScientificDirectorPost = editSchoolArticleViewModel.ScientificDirectorPost,
+                    ScientificDirectorPhoneNumber = editSchoolArticleViewModel.ScientificDirectorPhoneNumber,
+                    ScientificDirectorEmail = editSchoolArticleViewModel.ScientificDirectorEmail,
+                    UploadDateTime = editSchoolArticleViewModel.UploadDateTime,
+                    Section = editSchoolArticleViewModel.Section,
+                    ArticleFormStatus = editSchoolArticleViewModel.ArticleFormStatus,
+                    ArticlePath = editSchoolArticleViewModel.ArticlePath,
                 };
                 _schoolArticleRepository.Update(articleForm);
                 return RedirectToAction("Index");
             }
         }
-        return View(changeStatusSchoolArticleViewModel);
+        return View(editSchoolArticleViewModel);
     }
 
     [Authorize(Roles = ApplicationUserRoles.Student)]
@@ -115,7 +151,7 @@ public class SchoolArticleController : Controller
     public IActionResult Upload()
     {
         var currentApplicationUserId = _httpContextAccessor.HttpContext?.User.GetUserId();
-        var currentDate = DateTime.Now;
+        var currentDate = DateTime.UtcNow;
         var notVerifiedStatus = ArticleFormStatus.NotVerified;
 
         var registrationFormViewModel = new SchoolArticleFormViewModel()
@@ -161,7 +197,7 @@ public class SchoolArticleController : Controller
                 UploadDateTime = schoolArticleFormViewModel.UploadDateTime,
                 Section = schoolArticleFormViewModel.Section,
                 ArticleFormStatus = schoolArticleFormViewModel.ArticleFormStatus,
-                ArticlePath = SaveFile(schoolArticleFormViewModel.Article, schoolArticleFormViewModel.Section, schoolArticleFormViewModel.SchoolBoySurname, schoolArticleFormViewModel.SchoolBoyName, schoolArticleFormViewModel.SchoolBoyPatronymic),
+                ArticlePath = SaveFile(schoolArticleFormViewModel.Article),
                 UserSchoolArticles = new List<UserSchoolArticle>
                 {
                     new() { ApplicationUserId = schoolArticleFormViewModel.ApplicationUserId }
@@ -174,6 +210,7 @@ public class SchoolArticleController : Controller
         }
         return View(schoolArticleFormViewModel);
     }
+    
     [Authorize(Roles = ApplicationUserRoles.Administrator)]
     public IActionResult OpenArticle(int id)
     {
@@ -184,58 +221,43 @@ public class SchoolArticleController : Controller
             return NotFound();
         }
 
-        string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", article.ArticlePath);
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", article.ArticlePath);
 
-        return File(filePath, "application/msword", Path.GetFileNameWithoutExtension(filePath));
+        return File(filePath, "application/msword", Path.GetFileName(filePath));
     }
 
     [Authorize(Roles = ApplicationUserRoles.Administrator)]
-    private string SaveFile(IFormFile file, string section, string surname, string name, string? patronymic)
+    private string SaveFile(IFormFile file)
     {
-
-        if (file != null && file.Length > 0)
+        if (file != null)
         {
-            string uploadsRoot = Path.Combine(_webHostEnvironment.WebRootPath, "files");
+            var uploadsRoot = Path.Combine(_webHostEnvironment.WebRootPath, "files");
 
-            string immfegiPath = Path.Combine(uploadsRoot, "ИММФЭГИ");
+            var immfegiPath = Path.Combine(uploadsRoot, "ИММФЭГИ");
             if (!Directory.Exists(immfegiPath))
             {
                 Directory.CreateDirectory(immfegiPath);
             }
+            var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+            var extension = Path.GetExtension(file.FileName);
+            var uniqueFileName = UniqueFileName.GetUniqueFileName(fileName, extension, immfegiPath);
 
-            string sectionPath = Path.Combine(immfegiPath, section);
-            if (!Directory.Exists(sectionPath))
-            {
-                Directory.CreateDirectory(sectionPath);
-            }
-
-            var fullname = CombineFullName(surname, name, patronymic);
-            string participantPath = Path.Combine(sectionPath, fullname);
-            if (!Directory.Exists(participantPath))
-            {
-                Directory.CreateDirectory(participantPath);
-            }
-
-            string fileName = Path.GetFileNameWithoutExtension(file.FileName);
-            string extension = Path.GetExtension(file.FileName);
-            UniqueFileName uf = new();
-            string uniqueFileName = uf.GetUniqueFileName(fileName, extension, participantPath);
-
-            string filePath = Path.Combine(participantPath, uniqueFileName);
+            var filePath = Path.Combine(immfegiPath, uniqueFileName);
             using (var fileStream = new FileStream(filePath, FileMode.Create))
             {
                 file.CopyTo(fileStream);
             }
 
-            return "/files/ИММФЭГИ/" + section + "/" + fullname + "/" + uniqueFileName;
+            return "/files/ИММФЭГИ/" + uniqueFileName;
         }
         return null;
     }
-
-    private static string CombineFullName(string surname, string name, string patronymic)
+    [Authorize(Roles = ApplicationUserRoles.Administrator)]
+    [HttpPost]
+    public IActionResult Delete(int id)
     {
-        var fullName = surname + " " + name + " " + patronymic;
-
-        return fullName;
+        _schoolArticleRepository.DeleteArticle(id);
+            
+        return RedirectToAction("Index");
     }
 }
