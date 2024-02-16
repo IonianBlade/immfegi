@@ -8,6 +8,63 @@ html {
   }
 }
 
+.partner {
+  flex-direction: row;
+}
+.imc {
+  width: 700px; 
+  height: 200px
+}
+.consorcium {
+  width: 250px; 
+  height: 250px
+}
+.spbgu {
+  width: 700px;
+  height: 200px
+}
+@media (max-width: 768px) {
+  .partner {
+    flex-direction: column;
+  }
+  .imc {
+    width: 300px;
+    height: 150px
+  }
+  .consorcium {
+    width: 260px;
+    height: 260px
+  }
+  .spbgu {
+    width: 300px;
+    height: 150px
+  }
+}
+
+.aboutConference {
+  flex-direction: row;
+}
+
+@media (max-width: 768px) {
+  .aboutConference {
+    flex-direction: column;
+  }
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+
+
 html {
   position: relative;
   min-height: 100%;
