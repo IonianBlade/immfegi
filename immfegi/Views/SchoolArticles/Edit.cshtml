@@ -1,0 +1,79 @@
+﻿@using immfegi.Data
+@model immfegi.ViewModels.NewViewModels.SchoolArticles.EditSchoolArticleViewModel
+
+@{
+	ViewData["Title"] = "Редактирование";
+}
+
+<div class="container py-5 h-100">
+	<div class="row d-flex justify-content-center align-items-center h-100">
+		<div class="col-12 col-md-8 ">
+			<div class="card shadow-2-strong" style="border-radius: 1rem;">
+				<div class="card-body p-5 text-center">
+					<h3 class="mb-5">Изменить статус</h3>
+					<form method="post" asp-action="Edit" enctype="multipart/form-data">
+						<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+						<input type="hidden" id="ApplicationUserId" name="ApplicationUserId" asp-for="ApplicationUserId" />
+						<input type="hidden" id="UploadDateTime" name="UploadDateTime" asp-for="UploadDateTime" />
+						<input type="hidden" id="ArticlePath" name="ArticlePath" asp-for="ArticlePath" />
+						<input type="hidden" id="RequestPath" name="RequestPath" asp-for="RequestPath" />
+						<input type="hidden" id="Section" name="Section" asp-for="Section"/>
+						
+						<div class="form-group m-2">
+							<label asp-for="Surname" class="control-label"></label>
+							<input asp-for="Surname" class="form-control rounded-pill" />
+							<span asp-validation-for="Surname" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="Name" class="control-label"></label>
+							<input  asp-for="Name" class="form-control rounded-pill" />
+							<span asp-validation-for="Name" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="Patronymic" class="control-label"></label>
+							<input  asp-for="Patronymic" class="form-control rounded-pill" />
+							<span asp-validation-for="Patronymic" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="ArticleName" class="control-label"></label>
+							<input asp-for="ArticleName" class="form-control rounded-pill" />
+							<span asp-validation-for="ArticleName" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="ArticleActivities" class="control-label"></label>
+							<select asp-items="@Html.GetEnumSelectList<ArticleActivities>()" asp-for="ArticleActivities" class="form-control rounded-pill" placeholder="Выберите"></select>
+							<span asp-validation-for="ArticleActivities" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="PhoneNumber" class="control-label"></label>
+							<input asp-for="PhoneNumber" class="form-control rounded-pill" />
+							<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="Email" class="control-label"></label>
+							<input asp-for="Email" class="form-control rounded-pill" />
+							<span asp-validation-for="Email" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="ArticleFormStatus" class="control-label"></label>
+							<select asp-items="@Html.GetEnumSelectList<ArticleFormStatus>()" asp-for="ArticleFormStatus" class="form-control rounded-pill"></select>
+							<span asp-validation-for="ArticleFormStatus" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<input class="btn btn-outline-success float-right rounded-pill" type="submit" value="Изменить статус" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

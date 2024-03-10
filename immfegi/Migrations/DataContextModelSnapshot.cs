@@ -90,15 +90,15 @@ namespace immfegi.Migrations
                         {
                             Id = "02174cf0–9412–4cfe-afbf-59f706d72cf6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "531d0a42-d6df-4269-b7b3-d313e7e4477a",
+                            ConcurrencyStamp = "0b07f1a1-2fbe-409d-81c2-72f10f8051cd",
                             Email = "zirinazirina2015@yandex.ru",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ZIRINAZIRINA2015@YANDEX.RU",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKRpYwiFxSWZ2zI06C6g8q91yA2UB/bOqSM+ZavaJaBbcG48j0AVK2ZUpdTp7FaV3A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJfHEwRY8r5oe/tLfb3u6le9V2+WYgcxN1jYGkhOjG2tX0WoFy6pvU8FKZnsljxZVQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "436911f1-fb1f-4ec4-8e00-f2033b4c73d9",
+                            SecurityStamp = "77636592-3af8-4aad-9324-8fd2e76f0c5f",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -106,15 +106,15 @@ namespace immfegi.Migrations
                         {
                             Id = "02174cf0–9412–4cfe-afbf-59f706d72cf2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "578e71a9-7773-4b3d-b5fa-57f6c7b320e2",
+                            ConcurrencyStamp = "dd54dddd-e7f6-4ab7-b593-816047f06edd",
                             Email = "inspector@test.ru",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "INSPECTOR@TEST.RU",
                             NormalizedUserName = "INSPECTOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPHJFVSx9knaSqjWWKoWrjYCJVbg+ch2bQv/ffJhI6O9XbuqUrdCBrBQ7+1uWsAqcw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEO8y0oob0pxJhO/VJX1sE9zmsvMIlxF3mT4/ddj38c+t+mMOqWh2DD5niBu62Vi5/Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "babf6ffa-85aa-4406-96ac-c81d862f0f8f",
+                            SecurityStamp = "514142f1-39d4-46d4-b5b9-06df0ac2de59",
                             TwoFactorEnabled = false,
                             UserName = "inspektor"
                         });
@@ -220,6 +220,169 @@ namespace immfegi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ArticleForms");
+                });
+
+            modelBuilder.Entity("immfegi.Models.NewModels.ApplicationUserArticles", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("ArticleId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("ArticleId");
+
+                    b.ToTable("ApplicationUserArticlesCollection");
+                });
+
+            modelBuilder.Entity("immfegi.Models.NewModels.ApplicationUserSchoolArticles", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("SchoolArticleId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("SchoolArticleId");
+
+                    b.ToTable("ApplicationUserSchoolArticlesCollection");
+                });
+
+            modelBuilder.Entity("immfegi.Models.NewModels.Article", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ArticleFormStatus")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ArticleNameOnEnglish")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ArticleNameOnRussian")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ArticlePath")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Patronymic")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("RequestPath")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Section")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UploadDateTime")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Articles");
+                });
+
+            modelBuilder.Entity("immfegi.Models.NewModels.SchoolArticle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ArticleActivities")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ArticleFormStatus")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ArticleName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ArticlePath")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Patronymic")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("RequestPath")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Section")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UploadDateTime")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SchoolArticles");
                 });
 
             modelBuilder.Entity("immfegi.Models.SchoolArticleForm", b =>
@@ -536,6 +699,44 @@ namespace immfegi.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("immfegi.Models.NewModels.ApplicationUserArticles", b =>
+                {
+                    b.HasOne("immfegi.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("immfegi.Models.NewModels.Article", "Article")
+                        .WithMany("ApplicationUserArticlesCollection")
+                        .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Article");
+                });
+
+            modelBuilder.Entity("immfegi.Models.NewModels.ApplicationUserSchoolArticles", b =>
+                {
+                    b.HasOne("immfegi.Models.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("immfegi.Models.NewModels.SchoolArticle", "SchoolArticle")
+                        .WithMany("ApplicationUserSchoolArticlesCollection")
+                        .HasForeignKey("SchoolArticleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("SchoolArticle");
+                });
+
             modelBuilder.Entity("immfegi.Models.UserArticle", b =>
                 {
                     b.HasOne("immfegi.Models.ApplicationUser", "ApplicationUser")
@@ -633,6 +834,16 @@ namespace immfegi.Migrations
             modelBuilder.Entity("immfegi.Models.ArticleForm", b =>
                 {
                     b.Navigation("UserArticles");
+                });
+
+            modelBuilder.Entity("immfegi.Models.NewModels.Article", b =>
+                {
+                    b.Navigation("ApplicationUserArticlesCollection");
+                });
+
+            modelBuilder.Entity("immfegi.Models.NewModels.SchoolArticle", b =>
+                {
+                    b.Navigation("ApplicationUserSchoolArticlesCollection");
                 });
 
             modelBuilder.Entity("immfegi.Models.SchoolArticleForm", b =>

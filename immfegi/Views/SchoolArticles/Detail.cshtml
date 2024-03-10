@@ -1,0 +1,57 @@
+﻿@using immfegi.External
+@model immfegi.ViewModels.NewViewModels.SchoolArticles.SchoolArticleDetailsViewModel
+
+@{
+    ViewData["Title"] = "Детали заявки";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Детали заявки</h3>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">Дата и время загрузки статьи:</dt>
+                        <dd class="col-sm-8">@Model.UploadDateTime</dd>
+
+                        <dt class="col-sm-4">Статус заявки:</dt>
+                        <dd class="col-sm-8">@Model.ArticleFormStatus.GetDisplayName()</dd>
+
+                        <div class="m-3">
+                            <h3 class="text-center fw-bold">Участник подавший статью</h3>
+                        </div>
+
+                        <dt class="col-sm-4">ФИО:</dt>
+                        <dd class="col-sm-8">@Model.Surname @Model.Name @Model.Patronymic</dd>
+
+                        <dt class="col-sm-4">Название работы:</dt>
+                        <dd class="col-sm-8">@Model.ArticleName</dd>
+
+                        <dt class="col-sm-4">Секция:</dt>
+                        <dd class="col-sm-8">@Model.Section</dd>
+
+                        <dt class="col-sm-4">Направление:</dt>
+                        <dd class="col-sm-8">@Model.ArticleActivities.GetDisplayName()</dd>
+
+                        <dt class="col-sm-4">Телефон:</dt>
+                        <dd class="col-sm-8">@Model.PhoneNumber</dd>
+
+                        <dt class="col-sm-4">Электронная почта:</dt>
+                        <dd class="col-sm-8">@Model.Email</dd>
+
+                    </dl>
+                    <form method="post" action="@Url.Action("Delete", "SchoolArticles")">
+                        @Html.AntiForgeryToken()
+                        <input readonly type="hidden" id="Id" name="Id" asp-for="Id"/>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-danger">Удалить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

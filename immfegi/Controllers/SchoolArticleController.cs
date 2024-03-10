@@ -260,4 +260,7 @@ public class SchoolArticleController : Controller
             
         return RedirectToAction("Index");
     }
+    
+    
+    
 }

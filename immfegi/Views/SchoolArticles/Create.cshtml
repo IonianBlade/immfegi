@@ -1,0 +1,90 @@
+﻿@using immfegi.Data
+@model immfegi.ViewModels.NewViewModels.SchoolArticles.SchoolArticleViewModel
+
+@{
+	ViewData["Title"] = "Подать статью";
+}
+
+<div class="container py-5 h-100">
+	<div class="row d-flex justify-content-center align-items-center h-100">
+		<div class="col-12 col-md-8 ">
+			<div class="card shadow-2-strong" style="border-radius: 1rem;">
+				<div class="card-body p-5 text-center">
+					<h3 class="mb-5">Регистрационная форма</h3>
+					<a href="https://disk.yandex.ru/i/9XxPkHN6hS65cA" target="_blank">ОБРАЗЕЦ ЗАЯВКИ</a>
+					@if (TempData["Error"] != null)
+					{
+						<div class="col-md-12 alert alert-danger">
+							<span><b>Ошибка!</b> - @TempData["Error"] </span>
+						</div>
+					}
+					@if (TempData["Success"] != null)
+					{
+						<div class="col-md-12 alert alert-success">
+							<span><b>Успешно!</b> - @TempData["Success"] </span>
+						</div>
+					}
+					<form asp-action="Create" enctype="multipart/form-data">
+						<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+						<input type="hidden" id="ApplicationUserId" name="ApplicationUserId" asp-for="ApplicationUserId" />
+						<input type="hidden" id="UploadDateTime" name="UploadDateTime" asp-for="UploadDateTime" />
+						<input type="hidden" id="ArticleFormStatus" name="ArticleFormStatus" asp-for="ArticleFormStatus" />
+						<input type="hidden" id="Section" name="Section" asp-for="Section" value="Секция 5. (для школьников). Конкурс научно-исследовательских работ «МИФы в Природе (математика, информатика, физика в природе)»." />
+						
+						<div class="form-group m-2">
+							<label asp-for="Surname" class="control-label"></label>
+							<input asp-for="Surname" class="form-control rounded-pill" />
+							<span asp-validation-for="Surname" class="text-danger"></span>
+						</div>
+						<div class="form-group m-2">
+							<label asp-for="Name" class="control-label"></label>
+							<input asp-for="Name" class="form-control rounded-pill" />
+							<span asp-validation-for="Name" class="text-danger"></span>
+						</div>
+						<div class="form-group m-2">
+							<label asp-for="Patronymic" class="control-label"></label>
+							<input asp-for="Patronymic" class="form-control rounded-pill" />
+							<span asp-validation-for="Patronymic" class="text-danger"></span>
+						</div>
+						<div class="form-group m-2">
+							<label asp-for="ArticleName" class="control-label"></label>
+							<input asp-for="ArticleName" class="form-control rounded-pill" />
+							<span asp-validation-for="ArticleName" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="ArticleActivities" class="control-label"></label>
+							<select asp-items="@Html.GetEnumSelectList<ArticleActivities>()" asp-for="ArticleActivities" class="form-control rounded-pill" placeholder="Выберите"></select>
+							<span asp-validation-for="ArticleActivities" class="text-danger"></span>
+						</div>
+						
+						<div class="form-group m-2">
+							<label asp-for="PhoneNumber" class="control-label"></label>
+							<input asp-for="PhoneNumber" class="form-control rounded-pill" />
+							<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+						</div>
+						<div class="form-group m-2">
+							<label asp-for="Email" class="control-label"></label>
+							<input asp-for="Email" class="form-control rounded-pill" />
+							<span asp-validation-for="Email" class="text-danger"></span>
+						</div>
+						<div class="form-group m-2">
+							<label asp-for="Article" class="control-label"></label>
+							<input type="file" accept=".doc, .docx" asp-for="Article" />
+							<span asp-validation-for="Article" class="text-danger"></span>
+						</div>
+						<div class="form-group m-2">
+							<label asp-for="Request" class="control-label"></label>
+							<input type="file" accept=".doc, .docx" asp-for="Request" />
+							<span asp-validation-for="Request" class="text-danger"></span>
+						</div>
+						<div class="form-group m-2">
+							<input class="btn btn-outline-success float-right rounded-pill" type="submit" value="Подать заявку" />
+						</div>
+					</form>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

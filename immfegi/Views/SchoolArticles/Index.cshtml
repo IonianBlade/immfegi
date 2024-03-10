@@ -1,0 +1,109 @@
+﻿@using immfegi.Data
+@using immfegi.External
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model List<immfegi.Models.NewModels.SchoolArticle>
+
+
+<div class="m-2">
+    <div class="m-2">
+        <h2>Статьи и заявки</h2>
+        <div class="d-flex flex-row">
+            <p class="p-2 fw-bold">Всего статей: @Model.Count</p>
+            <p class="p-2 fw-bold">Отклонено: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.Rejected)</p>
+            <p class="p-2 fw-bold">Завершено: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.Completed)</p>
+            <p class="p-2 fw-bold">На проверке: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.UnderReview)</p>
+            <p class="p-2 fw-bold">Отправлено модераторам: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.SentToModerators)</p>
+            <p class="p-2 fw-bold">На антиплагиате: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.AntiPlagiarism)</p>
+            <p class="p-2 fw-bold">Не проверено: @Model.Count(a => a.ArticleFormStatus == ArticleFormStatus.NotVerified)</p>
+        </div>
+    </div>
+    <table class="table" id="myTable">
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Название</th>
+            <th>Телефон</th>
+            <th>Почта</th>
+            <th>Секция</th>
+            <th>Дата</th>
+            <th>Статус</th>
+            <th>Статья</th>
+            <th>Изменить</th>
+            <th>Детали</th>
+            <th>Заявка</th>
+        </tr>
+        </thead>
+        <tbody>
+        @{
+            var counter = 1;
+        }
+        @foreach (var article in Model)
+        {
+            <tr >
+                <td>@counter</td>
+                <td>@article.Surname</td>
+                <td>@article.Name</td>
+                <td>@article.Patronymic</td>
+                <td>@article.ArticleName</td>
+                <td>@article.PhoneNumber</td>
+                <td>@article.Email</td>
+                <td>@article.Section</td>
+                <td>@article.UploadDateTime</td>
+                @if (article.ArticleFormStatus == ArticleFormStatus.Completed)
+                {
+                    <td class="card-text text-success fw-bold">@article.ArticleFormStatus.GetDisplayName()</td>
+                }
+                @if (article.ArticleFormStatus == ArticleFormStatus.Rejected)
+                { 
+                    <td class="card-text text-danger fw-bold">@article.ArticleFormStatus.GetDisplayName()</td>
+                }
+                @if (article.ArticleFormStatus == ArticleFormStatus.UnderReview)
+                {
+                    <td class="card-text text-primary fw-bold">@article.ArticleFormStatus.GetDisplayName()</td> 
+                }
+                @if (article.ArticleFormStatus == ArticleFormStatus.SentToModerators)
+                {
+                    <td class="card-text text-primary fw-bold">@article.ArticleFormStatus.GetDisplayName()</td> 
+                }
+                @if (article.ArticleFormStatus == ArticleFormStatus.AntiPlagiarism)
+                {
+                    <td class="card-text text-primary fw-bold">@article.ArticleFormStatus.GetDisplayName()</td> 
+                }
+                @if (article.ArticleFormStatus == ArticleFormStatus.NotVerified)
+                { 
+                    <td class="card-text text-warning fw-bold">@article.ArticleFormStatus.GetDisplayName()</td>
+                }
+                <td>
+                    <a class="btn btn-primary" asp-controller="SchoolArticles"  asp-action="DownloadArticle" asp-route-id="@article.Id" target="_blank">Скачать</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="SchoolArticles" asp-action="Edit" asp-route-id="@article.Id">Редактировать</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="SchoolArticles" asp-action="Detail" asp-route-id="@article.Id">Детали</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="SchoolArticles" asp-action="DownloadRequest" asp-route-id="@article.Id">Скачать</a>
+                </td>
+                
+            </tr>
+            counter++;
+        }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                language: {
+                        url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/ru.json',
+                    },
+            });
+        });
+    </script>
+}

@@ -12,7 +12,7 @@ public static class SchoolArticleExportService
         {
             using (var document = new XWPFDocument())
             {
-                AddTableToWordDocument(document, "Заявка участника-школьника", new Dictionary<string, string>
+                AddTableToWordDocument(document, "Заявка участника", new Dictionary<string, string>
                 {
                     { "Фамилия, Имя, Отчество", GetFullName(article.SchoolBoySurname, article.SchoolBoyName, article.SchoolBoyPatronymic) },
                     { "Название работы", article.ArticleName },
@@ -29,7 +29,7 @@ public static class SchoolArticleExportService
                     { "Электронная почта", article.SchoolBoyEmail },
                 });
                 
-                AddTableToWordDocument(document, "Сведения о научном руководителе", new Dictionary<string, string>
+                AddTableToWordDocument(document, "Сведения о научном руководителе (для студентов)", new Dictionary<string, string>
                 {
                     { "Фамилия, Имя, Отчество", GetFullName(article.ScientificDirectorSurname, article.ScientificDirectorName, article.ScientificDirectorPatronymic) },
                     { "Научное звание", article.ScientificDirectorTitle },
