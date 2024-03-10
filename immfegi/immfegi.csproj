@@ -30,6 +30,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="wwwroot\files\immfegi\" />
       <Folder Include="wwwroot\files\ИММФЭГИ\" />
     </ItemGroup>
 
